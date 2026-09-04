@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <!-- Splash Activity (Launcher Screen) -->
+        <!-- Splash Screen (Launcher Activity) -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -28,6 +28,11 @@
         <!-- Simulator Activity -->
         <activity
             android:name=".SimulatorActivity"
+            android:exported="false" />
+
+        <!-- Road Signs Activity -->
+        <activity
+            android:name=".RoadSignsActivity"
             android:exported="false" />
 
         <!-- Settings Activity -->

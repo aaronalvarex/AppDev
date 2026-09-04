@@ -32,7 +32,7 @@ public class HomeActivity extends AppCompatActivity {
         navSettings = findViewById(R.id.navSettings);
         navProfile = findViewById(R.id.navProfile);
 
-        // Navigation Handler para sa Settings
+        // Bottom Navigation Handlers
         navSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,7 +41,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        // Navigation Handler para sa Profile
         navProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        // Simulator Button Click Handler -> Bubuksan ang SimulatorActivity
+        // Main Menu Button Handlers
         btnSimulator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +61,8 @@ public class HomeActivity extends AppCompatActivity {
         btnRoadSigns.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(HomeActivity.this, "Road Signs Clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(HomeActivity.this, RoadSignsActivity.class);
+                startActivity(intent);
             }
         });
 

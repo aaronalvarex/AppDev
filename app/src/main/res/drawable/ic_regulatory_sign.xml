@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:layout_width="48dp"
+    android:height="48dp"
+    android:layout_height="48dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Red circle boundary -->
+    <path
+        android:fillColor="#EF4444"
+        android:pathData="M12,2A10,10 0 1,0 22,12 10,10 0 0,0 12,2z" />
+    <!-- White inner background -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12,5A7,7 0 1,0 19,12 7,7 0 0,0 12,5z" />
+    <!-- Red slash line -->
+    <path
+        android:fillColor="#EF4444"
+        android:pathData="M6.7,18.7 L18.7,6.7 L17.3,5.3 L5.3,17.3 Z" />
+</vector>
