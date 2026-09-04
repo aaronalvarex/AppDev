@@ -1,0 +1,53 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="60dp"
+    android:viewportWidth="100"
+    android:viewportHeight="60">
+
+    <!-- Car Body -->
+    <path
+        android:fillColor="#0B4ED8"
+        android:pathData="M12,32 C12,32 18,18 35,16 C48,14.5 65,16 78,20 C88,23 92,28 92,34 L92,42 C92,44 90,46 88,46 L12,46 C10,46 8,44 8,42 L8,36 C8,33 10,32 12,32 Z"/>
+
+    <!-- Car Roof & Windows Frame -->
+    <path
+        android:fillColor="#1E293B"
+        android:pathData="M24,30 L36,19 C42,18 60,19 72,22 L82,30 Z"/>
+
+    <!-- Front/Side Windows (Glass effect) -->
+    <path
+        android:fillColor="#93C5FD"
+        android:pathData="M27,29 L37,20 C42,19.5 52,20 54,20 L54,29 Z"/>
+    <path
+        android:fillColor="#93C5FD"
+        android:pathData="M57,20 C64,20.5 73,21.5 79,29 L57,29 Z"/>
+
+    <!-- Front Headlight -->
+    <path
+        android:fillColor="#FDE047"
+        android:pathData="M88,34 C91,34 93,36 93,38 L86,38 C86,35 87,34 88,34 Z"/>
+
+    <!-- Back Taillight -->
+    <path
+        android:fillColor="#EF4444"
+        android:pathData="M8,35 C8,33 10,33 11,33 L11,38 L9,38 C8.4,38 8,36.5 8,35 Z"/>
+
+    <!-- Front Wheel (Outer Rim) -->
+    <path
+        android:fillColor="#1E293B"
+        android:pathData="M72,46m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0"/>
+    <!-- Front Wheel (Inner Rim) -->
+    <path
+        android:fillColor="#94A3B8"
+        android:pathData="M72,46m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"/>
+
+    <!-- Rear Wheel (Outer Rim) -->
+    <path
+        android:fillColor="#1E293B"
+        android:pathData="M28,46m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0"/>
+    <!-- Rear Wheel (Inner Rim) -->
+    <path
+        android:fillColor="#94A3B8"
+        android:pathData="M28,46m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"/>
+
+</vector>
