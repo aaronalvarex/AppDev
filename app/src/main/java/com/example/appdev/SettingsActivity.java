@@ -1,25 +1,28 @@
 package com.example.appdev;
 
-import android.content.DialogInterface;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
-import androidx.appcompat.app.AlertDialog;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
 public class SettingsActivity extends AppCompatActivity {
 
     private LinearLayout navHome, navSettings, navProfile;
-    private RelativeLayout btnLanguage, btnHowToUse, btnPrivacyPolicy, btnTerms, btnAbout, btnReportIssue;
-    private TextView tvSelectedLanguage;
 
-    // List ng English language options
-    private final String[] languageOptions = {"English (US)", "English (UK)", "English (Philippines)"};
-    private int selectedLanguageIndex = 0; // Default: English (US)
+    private RelativeLayout btnHowToUse,
+            btnPrivacyPolicy,
+            btnTerms,
+            btnAbout,
+            btnReportIssue;
+
+    private SwitchCompat switchSound;
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,19 +30,21 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         initViews();
+        setupSoundPreference();
         setupClickListeners();
     }
 
     private void initViews() {
-        // Navigation Views
+
+        // Sound Toggle Switch
+        switchSound = findViewById(R.id.switchSound);
+
+        // Bottom Navigation
         navHome = findViewById(R.id.navHome);
         navSettings = findViewById(R.id.navSettings);
         navProfile = findViewById(R.id.navProfile);
 
         // Settings Buttons
-        btnLanguage = findViewById(R.id.btnLanguage);
-        tvSelectedLanguage = findViewById(R.id.tvSelectedLanguage);
-
         btnHowToUse = findViewById(R.id.btnHowToUse);
         btnPrivacyPolicy = findViewById(R.id.btnPrivacyPolicy);
         btnTerms = findViewById(R.id.btnTerms);
@@ -47,75 +52,80 @@ public class SettingsActivity extends AppCompatActivity {
         btnReportIssue = findViewById(R.id.btnReportIssue);
     }
 
-    private void setupClickListeners() {
-        // Language Picker Dialog Action
-        btnLanguage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showLanguageDialog();
-            }
-        });
+    private void setupSoundPreference() {
+        preferences = getSharedPreferences("AppSettings", Context.MODE_PRIVATE);
+        boolean soundEnabled = preferences.getBoolean("sound_enabled", true);
+        switchSound.setChecked(soundEnabled);
 
-        // Placeholder Toast Feedback para sa iba pang options
-        btnHowToUse.setOnClickListener(v ->
-                Toast.makeText(SettingsActivity.this, "How to Use section", Toast.LENGTH_SHORT).show()
-        );
-
-        btnPrivacyPolicy.setOnClickListener(v ->
-                Toast.makeText(SettingsActivity.this, "Privacy Policy section", Toast.LENGTH_SHORT).show()
-        );
-
-        btnTerms.setOnClickListener(v ->
-                Toast.makeText(SettingsActivity.this, "Terms of Service section", Toast.LENGTH_SHORT).show()
-        );
-
-        btnAbout.setOnClickListener(v ->
-                Toast.makeText(SettingsActivity.this, "DriveSmart PH v1.0.0", Toast.LENGTH_SHORT).show()
-        );
-
-        btnReportIssue.setOnClickListener(v ->
-                Toast.makeText(SettingsActivity.this, "Report an Issue section", Toast.LENGTH_SHORT).show()
-        );
-
-        // Bottom Navigation Actions
-        navHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-        navProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SettingsActivity.this, ProfileActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        // Mino-save lang ang state (ON/OFF) para sa Simulator
+        switchSound.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("sound_enabled", isChecked);
+            editor.apply();
         });
     }
 
-    private void showLanguageDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Select Language");
+    private void setupClickListeners() {
 
-        builder.setSingleChoiceItems(languageOptions, selectedLanguageIndex, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                selectedLanguageIndex = which;
-                String selectedLang = languageOptions[which];
+        // How to Use
+        btnHowToUse.setOnClickListener(v ->
+                Toast.makeText(
+                        SettingsActivity.this,
+                        "How to Use section",
+                        Toast.LENGTH_SHORT
+                ).show()
+        );
 
-                // Update textview value
-                tvSelectedLanguage.setText(selectedLang);
+        // Privacy Policy
+        btnPrivacyPolicy.setOnClickListener(v ->
+                Toast.makeText(
+                        SettingsActivity.this,
+                        "Privacy Policy section",
+                        Toast.LENGTH_SHORT
+                ).show()
+        );
 
-                Toast.makeText(SettingsActivity.this, "Language set to " + selectedLang, Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
-            }
+        // Terms of Service
+        btnTerms.setOnClickListener(v ->
+                Toast.makeText(
+                        SettingsActivity.this,
+                        "Terms of Service section",
+                        Toast.LENGTH_SHORT
+                ).show()
+        );
+
+        // About
+        btnAbout.setOnClickListener(v ->
+                Toast.makeText(
+                        SettingsActivity.this,
+                        "DriveSmart PH v1.0.0",
+                        Toast.LENGTH_SHORT
+                ).show()
+        );
+
+        // Report an Issue
+        btnReportIssue.setOnClickListener(v ->
+                Toast.makeText(
+                        SettingsActivity.this,
+                        "Report an Issue section",
+                        Toast.LENGTH_SHORT
+                ).show()
+        );
+
+        // Home Navigation
+        navHome.setOnClickListener(v -> {
+            finish();
         });
 
-        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+        // Profile Navigation
+        navProfile.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    SettingsActivity.this,
+                    ProfileActivity.class
+            );
 
-        AlertDialog dialog = builder.create();
-        dialog.show();
+            startActivity(intent);
+            finish();
+        });
     }
 }

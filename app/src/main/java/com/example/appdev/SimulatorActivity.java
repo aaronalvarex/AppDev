@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SimulatorActivity extends AppCompatActivity {
@@ -22,7 +23,7 @@ public class SimulatorActivity extends AppCompatActivity {
         // Populate dynamic data sa card items
         setupScenarioCards();
 
-        // Back Button Handler (Babalik sa Home / isasara ang Simulator screen)
+        // Back Button
         btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,7 +32,7 @@ public class SimulatorActivity extends AppCompatActivity {
             }
         });
 
-        // Navigation setup
+        // Navigation
         navHome = findViewById(R.id.navHome);
         navSettings = findViewById(R.id.navSettings);
         navProfile = findViewById(R.id.navProfile);
@@ -46,7 +47,10 @@ public class SimulatorActivity extends AppCompatActivity {
         navSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SimulatorActivity.this, SettingsActivity.class);
+                Intent intent = new Intent(
+                        SimulatorActivity.this,
+                        SettingsActivity.class
+                );
                 startActivity(intent);
                 finish();
             }
@@ -55,7 +59,10 @@ public class SimulatorActivity extends AppCompatActivity {
         navProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SimulatorActivity.this, ProfileActivity.class);
+                Intent intent = new Intent(
+                        SimulatorActivity.this,
+                        ProfileActivity.class
+                );
                 startActivity(intent);
                 finish();
             }
@@ -63,28 +70,64 @@ public class SimulatorActivity extends AppCompatActivity {
     }
 
     private void setupScenarioCards() {
+
         // 1. Traffic Light
         View card1 = findViewById(R.id.cardTrafficLight);
-        setCardData(card1, R.drawable.img_traffic_light, "Traffic Light", "Test your response at traffic lights.");
+
+        setCardData(
+                card1,
+                R.drawable.img_traffic_light,
+                "Traffic Light",
+                "Test your response at traffic lights."
+        );
 
         // 2. Stop Sign
         View card2 = findViewById(R.id.cardStopSign);
-        setCardData(card2, R.drawable.img_stop_sign, "Stop Sign", "Practice stopping at stop signs.");
+
+        setCardData(
+                card2,
+                R.drawable.img_stop_sign,
+                "Stop Sign",
+                "Practice stopping at stop signs."
+        );
 
         // 3. Pedestrian Crossing
         View card3 = findViewById(R.id.cardPedestrianCrossing);
-        setCardData(card3, R.drawable.img_pedestrian_crossing, "Pedestrian Crossing", "Learn to yield for pedestrians.");
+
+        setCardData(
+                card3,
+                R.drawable.img_pedestrian_crossing,
+                "Pedestrian Crossing",
+                "Learn to yield for pedestrians."
+        );
 
         // 4. Right-of-Way
         View card4 = findViewById(R.id.cardRightOfWay);
-        setCardData(card4, R.drawable.img_right_of_way, "Right-of-Way", "Understand who goes first in intersections.");
+
+        setCardData(
+                card4,
+                R.drawable.img_right_of_way,
+                "Right-of-Way",
+                "Understand who goes first in intersections."
+        );
 
         // 5. Lane Use
         View card5 = findViewById(R.id.cardLaneUse);
-        setCardData(card5, R.drawable.img_lane_use, "Lane Use", "Choose the correct lane for safety.");
+
+        setCardData(
+                card5,
+                R.drawable.img_lane_use,
+                "Lane Use",
+                "Choose the correct lane for safety."
+        );
     }
 
-    private void setCardData(View cardView, int imageResId, String title, String description) {
+    private void setCardData(
+            View cardView,
+            int imageResId,
+            String title,
+            String description) {
+
         ImageView img = cardView.findViewById(R.id.imgScenario);
         TextView tvTitle = cardView.findViewById(R.id.tvTitle);
         TextView tvDesc = cardView.findViewById(R.id.tvDescription);
@@ -94,9 +137,29 @@ public class SimulatorActivity extends AppCompatActivity {
         tvDesc.setText(description);
 
         cardView.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                Toast.makeText(SimulatorActivity.this, "Selected: " + title, Toast.LENGTH_SHORT).show();
+
+                // Traffic Light opens the actual simulator
+                if (title.equals("Traffic Light")) {
+
+                    Intent intent = new Intent(
+                            SimulatorActivity.this,
+                            TrafficLightSimulatorActivity.class
+                    );
+
+                    startActivity(intent);
+
+                } else {
+
+                    // Other scenarios for now
+                    Toast.makeText(
+                            SimulatorActivity.this,
+                            "Selected: " + title,
+                            Toast.LENGTH_SHORT
+                    ).show();
+                }
             }
         });
     }

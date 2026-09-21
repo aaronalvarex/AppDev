@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!-- HEADER -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:paddingHorizontal="20dp">
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:text="‹"
+            android:textColor="#0B1A3E"
+            android:textSize="32sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Traffic Light"
+            android:textColor="#000000"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="Score: 0"
+            android:textColor="#0B4ED8"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+    <!-- SCROLLABLE CONTENT -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header"
+        android:layout_above="@id/bottomSpace"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingBottom="24dp">
+
+
+            <!-- PROGRESS -->
+            <TextView
+                android:id="@+id/tvProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="10dp"
+                android:text="Scenario 1 of 10"
+                android:textColor="#0B1A3E"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+
+            <!-- SCENARIO CARD -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                app:cardBackgroundColor="#EEF4FF"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LTO TRAFFIC SIGNAL SCENARIO"
+                        android:textColor="#0B4ED8"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvScenario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:lineSpacingExtra="2dp"
+                        android:text="You approach an intersection and the traffic light is RED. What should you do?"
+                        android:textColor="#1F2937"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- SIMULATOR AREA -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:layout_marginBottom="18dp"
+                app:cardBackgroundColor="#F8FAFC"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="0dp">
+
+                <FrameLayout
+                    android:id="@+id/simulationArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <!-- SKY -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#EAF4FF" />
+
+
+                    <!-- ROAD -->
+                    <View
+                        android:id="@+id/road"
+                        android:layout_width="match_parent"
+                        android:layout_height="125dp"
+                        android:layout_gravity="bottom"
+                        android:background="#374151" />
+
+
+                    <!-- ROAD CENTER LINE -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="61dp"
+                        android:background="#FFFFFF" />
+
+
+                    <!-- STOP LINE -->
+                    <View
+                        android:id="@+id/stopLine"
+                        android:layout_width="6dp"
+                        android:layout_height="125dp"
+                        android:layout_gravity="bottom|right"
+                        android:layout_marginRight="105dp"
+                        android:background="#FFFFFF" />
+
+
+                    <!-- TRAFFIC LIGHT POLE -->
+                    <View
+                        android:layout_width="7dp"
+                        android:layout_height="135dp"
+                        android:layout_gravity="top|right"
+                        android:layout_marginRight="55dp"
+                        android:background="#374151" />
+
+
+                    <!-- TRAFFIC LIGHT -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="68dp"
+                        android:layout_height="172dp"
+                        android:layout_gravity="top|right"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginRight="20dp"
+                        app:cardBackgroundColor="#0B1A3E"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <!-- RED -->
+                            <View
+                                android:id="@+id/redLight"
+                                android:layout_width="43dp"
+                                android:layout_height="43dp"
+                                android:background="#FF3B30" />
+
+                            <!-- YELLOW -->
+                            <View
+                                android:id="@+id/yellowLight"
+                                android:layout_width="43dp"
+                                android:layout_height="43dp"
+                                android:layout_marginTop="5dp"
+                                android:background="#FFD60A" />
+
+                            <!-- GREEN -->
+                            <View
+                                android:id="@+id/greenLight"
+                                android:layout_width="43dp"
+                                android:layout_height="43dp"
+                                android:layout_marginTop="5dp"
+                                android:background="#34C759" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <!-- CAR -->
+                    <TextView
+                        android:id="@+id/car"
+                        android:layout_width="70dp"
+                        android:layout_height="55dp"
+                        android:layout_gravity="bottom|left"
+                        android:layout_marginBottom="27dp"
+                        android:gravity="center"
+                        android:text="🚗"
+                        android:textSize="38sp" />
+
+
+                </FrameLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- RESULT CARD -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                app:cardBackgroundColor="#F8FAFC"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="0dp">
+
+                <TextView
+                    android:id="@+id/tvResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:minHeight="55dp"
+                    android:padding="12dp"
+                    android:text=""
+                    android:textColor="#0B1A3E"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- ACTION TITLE -->
+
+
+            <!-- ACTION TITLE -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="CHOOSE YOUR ACTION"
+                android:textColor="#0B1A3E"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+
+            <!-- ACTION BUTTONS 2 x 2 -->
+            <GridLayout
+                android:id="@+id/actionButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="2"
+                android:alignmentMode="alignMargins"
+                android:useDefaultMargins="false">
+
+
+                <!-- STOP -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnStop"
+                    android:layout_width="0dp"
+                    android:layout_height="58dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bg_simulator_button"
+                    android:gravity="center"
+                    android:text="STOP"
+                    android:textColor="#0B1A3E"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+
+                <!-- SLOW DOWN -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSlow"
+                    android:layout_width="0dp"
+                    android:layout_height="58dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bg_simulator_button"
+                    android:gravity="center"
+                    android:text="SLOW DOWN"
+                    android:textColor="#0B1A3E"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+
+                <!-- GO -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnGo"
+                    android:layout_width="0dp"
+                    android:layout_height="58dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/bg_simulator_button"
+                    android:gravity="center"
+                    android:text="GO"
+                    android:textColor="#0B1A3E"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+
+                <!-- GO WITH CAUTION -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnCaution"
+                    android:layout_width="0dp"
+                    android:layout_height="58dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/bg_simulator_button"
+                    android:gravity="center"
+                    android:text="GO WITH CAUTION"
+                    android:textColor="#0B1A3E"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+            </GridLayout>
+
+
+            <!-- NEXT SCENARIO -->
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#0B4ED8"
+                android:text="NEXT SCENARIO"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <!-- BOTTOM SPACE -->
+    <View
+        android:id="@+id/bottomSpace"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

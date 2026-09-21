@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <!-- Header Section with Back Button -->
+    <!-- HEADER -->
+
     <RelativeLayout
         android:id="@+id/headerLayout"
         android:layout_width="match_parent"
@@ -14,7 +17,9 @@
         android:paddingTop="20dp"
         android:paddingBottom="12dp">
 
-        <!-- Back Button -->
+
+        <!-- BACK BUTTON -->
+
         <ImageView
             android:id="@+id/btnBack"
             android:layout_width="28dp"
@@ -29,7 +34,9 @@
             android:src="@drawable/ic_chevron_right"
             app:tint="#0052CC" />
 
-        <!-- Title and Subtitle -->
+
+        <!-- TITLE -->
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,29 +57,36 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:gravity="center"
-                android:text="Learn the meaning of common\nPhilippine road signs."
+                android:text="Learn the meaning of common&#10;Philippine road signs."
                 android:textColor="#0052CC"
                 android:textSize="13sp"
                 android:textStyle="bold" />
+
         </LinearLayout>
+
     </RelativeLayout>
 
-    <!-- Scrollable Body Content -->
+
+    <!-- MAIN SCROLLABLE CONTENT -->
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottomNavigation"
         android:layout_below="@id/headerLayout"
+        android:fillViewport="true"
         android:scrollbars="none">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="20dp"
-            android:paddingBottom="16dp">
+            android:paddingBottom="20dp">
 
-            <!-- Search Bar -->
+            <!-- SEARCH BAR -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
@@ -82,11 +96,13 @@
                 android:orientation="horizontal"
                 android:paddingHorizontal="14dp">
 
+
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_search"
                     app:tint="#9CA3AF" />
+
 
                 <EditText
                     android:id="@+id/etSearch"
@@ -99,9 +115,15 @@
                     android:textColor="#1F2937"
                     android:textColorHint="#9CA3AF"
                     android:textSize="14sp" />
+
             </LinearLayout>
 
-            <!-- Categories Label -->
+
+
+            <!-- ================================================= -->
+            <!-- CATEGORIES LABEL -->
+            <!-- ================================================= -->
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -112,34 +134,26 @@
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-            <!-- Category Filter Chips (Horizontal Scroll) -->
+
+
+            <!-- ================================================= -->
+            <!-- CATEGORY CHIPS -->
+            <!-- ================================================= -->
+
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="none">
+
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <!-- 1. All -->
-                    <TextView
-                        android:id="@+id/chipAll"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/bg_chip_active"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:paddingHorizontal="16dp"
-                        android:paddingVertical="6dp"
-                        android:text="All"
-                        android:textColor="#FFFFFF"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
 
-                    <!-- 2. Warning -->
+                    <!-- WARNING -->
+
                     <TextView
                         android:id="@+id/chipWarning"
                         android:layout_width="wrap_content"
@@ -155,7 +169,9 @@
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
-                    <!-- 3. Regulatory -->
+
+                    <!-- REGULATORY -->
+
                     <TextView
                         android:id="@+id/chipRegulatory"
                         android:layout_width="wrap_content"
@@ -171,9 +187,11 @@
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
-                    <!-- 4. Informative -->
+
+                    <!-- PEDESTRIAN -->
+
                     <TextView
-                        android:id="@+id/chipInformative"
+                        android:id="@+id/chipPedestrian"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -182,30 +200,16 @@
                         android:focusable="true"
                         android:paddingHorizontal="14dp"
                         android:paddingVertical="6dp"
-                        android:text="Informative"
+                        android:text="Pedestrian"
                         android:textColor="#0052CC"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
-                    <!-- 5. Priority -->
-                    <TextView
-                        android:id="@+id/chipPriority"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/bg_chip_inactive"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:paddingHorizontal="14dp"
-                        android:paddingVertical="6dp"
-                        android:text="Priority"
-                        android:textColor="#0052CC"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
 
-                    <!-- 6. Temporary -->
+                    <!-- ROAD OBSTACLE -->
+
                     <TextView
-                        android:id="@+id/chipTemporary"
+                        android:id="@+id/chipRoadObstacle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_chip_inactive"
@@ -213,46 +217,103 @@
                         android:focusable="true"
                         android:paddingHorizontal="14dp"
                         android:paddingVertical="6dp"
-                        android:text="Temporary"
+                        android:text="Road Obstacle"
                         android:textColor="#0052CC"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
+
             </HorizontalScrollView>
 
-            <!-- Cards Container -->
+
+
+            <!-- ================================================= -->
+            <!-- CATEGORY CARDS -->
+            <!-- ================================================= -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:orientation="vertical">
 
+
+                <!-- WARNING -->
+
                 <include
                     android:id="@+id/cardWarningSigns"
                     layout="@layout/item_road_sign_card" />
+
+
+                <!-- REGULATORY -->
 
                 <include
                     android:id="@+id/cardRegulatorySigns"
                     layout="@layout/item_road_sign_card" />
 
-                <include
-                    android:id="@+id/cardInformativeSigns"
-                    layout="@layout/item_road_sign_card" />
+
+                <!-- PEDESTRIAN -->
 
                 <include
-                    android:id="@+id/cardPrioritySigns"
+                    android:id="@+id/cardPedestrianSigns"
                     layout="@layout/item_road_sign_card" />
 
+
+                <!-- ROAD OBSTACLE -->
+
                 <include
-                    android:id="@+id/cardTemporarySigns"
+                    android:id="@+id/cardRoadObstacleSigns"
                     layout="@layout/item_road_sign_card" />
 
             </LinearLayout>
+
+
+            <!-- WARNING SIGNS GRID -->
+
+            <GridLayout
+                android:id="@+id/warningSignsGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:columnCount="2"
+                android:padding="6dp"
+                android:visibility="gone" />
+
+            <GridLayout
+                android:id="@+id/regulatorySignsGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:columnCount="2"
+                android:padding="6dp"
+                android:visibility="gone" />
+
+            <GridLayout
+                android:id="@+id/pedestrianSignsGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:columnCount="2"
+                android:padding="6dp"
+                android:visibility="gone" />
+
+            <GridLayout
+                android:id="@+id/roadObstacleSignsGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:columnCount="2"
+                android:padding="6dp"
+                android:visibility="gone" />
+
         </LinearLayout>
+
     </ScrollView>
 
-    <!-- Bottom Navigation Bar -->
+
+    <!-- BOTTOM NAVIGATION -->
+
     <LinearLayout
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
@@ -261,6 +322,9 @@
         android:background="#FFFFFF"
         android:elevation="8dp"
         android:orientation="horizontal">
+
+
+        <!-- HOME -->
 
         <LinearLayout
             android:id="@+id/navHome"
@@ -272,11 +336,13 @@
             android:gravity="center"
             android:orientation="vertical">
 
+
             <ImageView
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:src="@drawable/ic_home"
                 app:tint="#6B7280" />
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -285,7 +351,12 @@
                 android:text="Home"
                 android:textColor="#6B7280"
                 android:textSize="11sp" />
+
         </LinearLayout>
+
+
+
+        <!-- SETTINGS -->
 
         <LinearLayout
             android:id="@+id/navSettings"
@@ -297,11 +368,13 @@
             android:gravity="center"
             android:orientation="vertical">
 
+
             <ImageView
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:src="@drawable/ic_settings"
                 app:tint="#6B7280" />
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -310,7 +383,12 @@
                 android:text="Settings"
                 android:textColor="#6B7280"
                 android:textSize="11sp" />
+
         </LinearLayout>
+
+
+
+        <!-- PROFILE -->
 
         <LinearLayout
             android:id="@+id/navProfile"
@@ -322,11 +400,13 @@
             android:gravity="center"
             android:orientation="vertical">
 
+
             <ImageView
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:src="@drawable/ic_profile"
                 app:tint="#6B7280" />
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -335,8 +415,90 @@
                 android:text="Profile"
                 android:textColor="#6B7280"
                 android:textSize="11sp" />
+
         </LinearLayout>
 
     </LinearLayout>
+
+
+
+    <!-- ===================================================== -->
+    <!-- WARNING SIGN DETAIL POPUP -->
+    <!-- ===================================================== -->
+
+    <FrameLayout
+        android:id="@+id/detailOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="gone">
+
+
+        <!-- POPUP CARD -->
+
+        <LinearLayout
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_warning_detail"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+
+            <!-- CLOSE BUTTON -->
+
+            <TextView
+                android:id="@+id/btnCloseDetail"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="×"
+                android:textColor="#0052CC"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+
+            <!-- SIGN IMAGE -->
+
+            <ImageView
+                android:id="@+id/detailImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="5dp"
+                android:contentDescription="Road sign"
+                android:scaleType="centerInside" />
+
+
+            <!-- SIGN TITLE -->
+
+            <TextView
+                android:id="@+id/detailTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <!-- SIGN DESCRIPTION -->
+
+            <TextView
+                android:id="@+id/detailDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:textColor="#444444"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
 
 </RelativeLayout>

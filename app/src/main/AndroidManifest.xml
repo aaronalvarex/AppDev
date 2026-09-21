@@ -20,6 +20,9 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".UsernameActivity" />
+
         <!-- Home Activity -->
         <activity
             android:name=".HomeActivity"
@@ -30,12 +33,38 @@
             android:name=".SimulatorActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".ResultActivity"
+            android:exported="false" />
+
+        <activity android:name=".TrafficLightSimulatorActivity" />
+
         <!-- Road Signs Activity -->
         <activity
             android:name=".RoadSignsActivity"
             android:exported="false" />
 
-        <!-- Settings Activity -->
+        <activity
+            android:name=".TrafficRulesActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".TurningOvertakingActivity"
+            android:exported="false" />
+
+        <activity android:name=".ChangingLanesActivity" />
+        <activity android:name=".RightOfWayActivity" />
+        <activity android:name=".YellowBoxActivity" />
+        <activity android:name=".EmergencyVehicleActivity" />
+        <activity android:name=".ParkingActivity" />
+        <activity android:name=".HitchingActivity" />
+        <activity android:name=".RedFlagLightsActivity" />
+        <activity android:name=".UseRedFlagsActivity" />
+        <activity android:name=".MufflersActivity" />
+        <activity android:name=".TiresActivity" />
+        <activity android:name=".RoadCrashActivity" />
+        <activity android:name=".OtherDrivingRulesActivity" />
+
         <activity
             android:name=".SettingsActivity"
             android:exported="false" />
@@ -44,6 +73,9 @@
         <activity
             android:name=".ProfileActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".EditProfileActivity" />
 
     </application>
 
