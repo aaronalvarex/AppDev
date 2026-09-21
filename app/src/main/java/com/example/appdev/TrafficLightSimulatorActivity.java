@@ -438,6 +438,11 @@ public class TrafficLightSimulatorActivity extends AppCompatActivity {
         car = findViewById(R.id.car);
         stopLine = findViewById(R.id.stopLine);
 
+        // FLIP CAR DIRECTION:
+        // Kung pakanaw (right) ang takbo papunta sa traffic light pero nakaharap sa pakaliwa (left) ang kotse,
+        // baguhin ang orientation nito dito. Palitan ng 1f kung nakaharap na sa tama.
+        car.setScaleX(-1f);
+
 
         // =====================================================
         // FIND TEXT VIEWS
@@ -968,10 +973,7 @@ public class TrafficLightSimulatorActivity extends AppCompatActivity {
 
     private void moveCarFast() {
 
-        float distance =
-                stopLine.getX()
-                        - car.getX()
-                        - car.getWidth();
+        float distance = Math.abs(stopLine.getX() - car.getX());
 
 
         if (distance < 150) {
@@ -1000,10 +1002,7 @@ public class TrafficLightSimulatorActivity extends AppCompatActivity {
 
     private void moveCarSlow() {
 
-        float distance =
-                stopLine.getX()
-                        - car.getX()
-                        - car.getWidth();
+        float distance = Math.abs(stopLine.getX() - car.getX());
 
 
         if (distance < 150) {
@@ -1032,10 +1031,7 @@ public class TrafficLightSimulatorActivity extends AppCompatActivity {
 
     private void moveCarCautiously() {
 
-        float distance =
-                stopLine.getX()
-                        - car.getX()
-                        - car.getWidth();
+        float distance = Math.abs(stopLine.getX() - car.getX());
 
 
         if (distance < 150) {
